@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ recipe.name }}{% endblock %}
+
+{% block page %}
+
+<div class="container mt-5 mb-5">
+  <div class="text-left">
+    <h1 class="clover-green">{{ article.name }}</h1>
+    <h5>Дата: {{ article.pub_date }}</h5>
+    <p class="mt-5 ml-2">{{ article.content| safe }}</p>
+  </div>
+</div>
+
+{% endblock %}

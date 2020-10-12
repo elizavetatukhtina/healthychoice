@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Welcome{% endblock %}
+
+{% block page %}
+
+
+  <div class="jumbotron mb-0 mt-0">
+    <h1>Easy Eating</h1>
+    <p style="color: white;">{{ description }}</p>
+    <div class="container text-center">
+      {% if facts != None %}
+      <div class="card-group">
+      {% for product in facts %}
+      <div class="card mr-4 crd-sm" style="max-width: 14rem;">
+        <div class="card-body mb-0 flex-column d-flex">
+        <img src="{{ product.image.url }}" alt="{{  product.name }}" class="img-fluid"/>
+        <h3 class="card-title mt-2">{{  product.name | title }}</h3>
+        <h5 class="card-subtitle">{{  product.category }}</h5>
+        <p class="card-text mt-3">
+          {{ product.description|truncatechars:45| safe}}
+        </p>
+        <a href="/facts/{{ product.slug }}/" class="btn btn-sm mt-auto">Далее</a>
+      </div>
+      </div>
+      {% endfor %}
+    </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <main>
+    <img src="{% static "img/veggies.jpg" %}" alt="veggies" class="img-fluid mb-0"/>
+  </main>
+
+{% endblock %}

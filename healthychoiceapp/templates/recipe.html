@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ recipe.name }}{% endblock %}
+
+{% block page %}
+
+<div class="container text-center">
+  <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" class="mb-2 mt-5 img-fluid responsive img-thumbnail text-center">
+  <div class="text-left">
+    <h1 class="clover-green">{{ recipe.name }}</h1>
+    <form method="post" >
+      {% csrf_token %}
+      {% if state != "Зарегистрируйтесь, чтобы сохранять любимые рецепты" %}
+      <input type="submit" value="{{ state }}" class="btn btn-sm ml-0" style="background-color: {{ color }}">
+      {% endif %}
+      {% if state == "Зарегистрируйтесь, чтобы сохранять любимые рецепты" %}
+      <a href="{% url 'eater-profile' %}" class="clover-green"><i>{{state}}</i></a>
+      {% endif %}
+    </form>
+    <h5>Ингредиенты: {{ ingredients }}</h5>
+    <p class="mt-3">{{ recipe.recipe | safe }}</p>
+  </div>
+</div>
+
+{% endblock %}

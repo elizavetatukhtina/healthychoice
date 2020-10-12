@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Регистрация{% endblock %}
+{% block page %}
+<div class="container text-center mt-5">
+  <h3 class="clover-green">Sign up</h3>
+  <form method="post" class="flex-form">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn mb-4">Подтвердить</button>
+    <p>Уже есть аккаунт? <a href="{% url 'login' %}" class="clover-green">Войти</a></p>
+  </form>
+</div>
+{% endblock %}

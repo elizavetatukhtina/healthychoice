@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Welcome{% endblock %}
+
+{% block page %}
+
+<div class="container mt-5">
+  <h2 class="mb-5 text-center">Последние записи</h2>
+  <div class="card-column mt-5">
+    {% for article in news %}
+    <div class="card mb-4">
+    <div class="card-body mb-0">
+      <h3 class="card-title mt-2">{{ article.name }}</h3>
+      <h5 class="card-subtitle">{{ article.pub_date }}</h5>
+      <p class="card-text">{{ article.content|truncatechars:245 | safe }}</p>
+      <a href="{{ article.slug }}/" class="btn btn-sm float-right mt-0 mb-3">Далее</a>
+  </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% if facts.count > 0 %}
+
+{% for fact in facts %}
+<li><a href="/facts/{{ fact.slug }}" style="color: gray;">{{ fact.name }}</a></li>
+{% endfor %}
+
+{% endif %}

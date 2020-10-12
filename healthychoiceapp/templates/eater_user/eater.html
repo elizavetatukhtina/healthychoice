@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block title %}Eater{% endblock %}
+
+{% block page %}
+<a class="btn btn-sm m-3 float-right" href="{% url 'logout' %}">Выйти</a>
+<div class="container mt-5">
+<h5 class="clover-green font-weight-bold"><img src="{% static "img/oat.png" %}" width="30" height="30">{{ user.username }}</h5>
+<div class="row mt-3">
+  <div class="column green-dark pl-4 pr-3 pb-2 pt-3">
+    <h5 class="font-weight-bold clover-green mb-3">любимые факты: </h5>
+    <ul class="list">
+      {% for product in products %}
+      <li><a href="/facts/{{ product.slug }}/">{{ product.name | title }}</a></li>
+      {% endfor %}
+    </ul>
+    <h5 class="font-weight-bold clover-green mb-3 mt-2">любимые рецепты: </h5>
+    <ul class="list">
+      {% for recipe in recipes %}
+      <li><a href="/recipes/{{ recipe.slug }}/">{{ recipe.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="column green-light pl-4 pr-3 pb-2 pt-3">
+    <h5 class="font-weight-bold clover-green">список покупок: </h5>
+    <form method="POST" id="shop_form">
+       {% csrf_token %}
+       <textarea style="background-color: #ecffe6; color: gray;" class="form-control" placeholder="Для ваших заметок" name="shoplist" id="shop_text">{{ shoplist.content }}</textarea>
+       <input type="submit" value="Сохранить" class="btn btn-sm float-right">
+    </form>
+  </div>
+</div>
+</div>
+
+
+{% endblock %}

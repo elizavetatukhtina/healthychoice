@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block page %}
+
+<div class="container text-center">
+  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid responsive img-thumbnail text-center">
+  <div class="text-left">
+      <h1 class="clover-green">{{ product.name | title }}  </h1>
+    <h3>Категория: {{ product.category }}</h3>
+    <form method="post" id="add_bookmark">
+      {% csrf_token %}
+      {% if state != "Зарегистрируйтесь, чтобы сохранять любимые факты" %}
+      <input type="submit" value="{{ state }}" class="btn btn-sm ml-0" style="background-color: {{ color }}">
+      {% endif %}
+      {% if state == "Зарегистрируйтесь, чтобы сохранять любимые факты" %}
+      <a href="{% url 'eater-profile' %}" class="clover-green"><i>{{state}}</i></a>
+      {% endif %}
+
+    </form>
+    <p>{{ product.description| safe }}</p>
+  </div>
+</div>
+
+
+{% endblock %}

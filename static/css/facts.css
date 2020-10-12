@@ -1,0 +1,49 @@
+.card-body {
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    font-size: 10pt !important;
+}
+
+.card {
+    background-color: #EEEBEB;
+    border: 1px solid rgba(238, 235, 235, 1);
+    border-radius: 0.3;
+}
+
+.cardSet1{
+  background-color: #EEEBEB;
+}
+
+.btn{
+  background-color: #6DB771;
+  color: white;
+  margin: 0.4rem;
+
+}
+
+.btn:hover{
+  color:#cccccc;
+}
+
+
+h3.card-title{
+  font-weight:bold;
+  font-size: 1.2rem;
+  margin: 0.4rem;
+  color: #6DB771;
+
+}
+
+h5.card-subtitle{
+  font-weight:bold;
+  font-size: 1rem;
+  margin: 0.4rem;
+  color: #58605A;
+}
+
+p.card-text{
+  font-size: 0.8rem;
+  padding-bottom:  0.1rem;
+  margin: 0.4rem;
+  line-height: 1.1rem;
+}
